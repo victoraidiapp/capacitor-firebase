@@ -368,6 +368,12 @@ export interface FirebaseAuthenticationPlugin {
    * @since 0.1.0
    */
   signOut(): Promise<void>;
+    /**
+   * Starts the delete current user flow.
+   *
+   * @since 0.1.0
+   */
+     deleteUser(): Promise<void>;
   /**
    * Unlinks a provider from a user account.
    *

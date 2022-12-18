@@ -494,6 +494,19 @@ public class FirebaseAuthentication {
         call.resolve();
     }
 
+    public void deleteUser(final PluginCall call) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        user.delete()
+        .addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                   call.resolve();
+                }
+            }
+        });
+    }
+
     public void unlink(final PluginCall call, FirebaseUser user, @NonNull String providerId) {
         user
             .unlink(providerId)

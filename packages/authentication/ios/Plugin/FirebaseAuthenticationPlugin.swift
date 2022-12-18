@@ -491,6 +491,10 @@ public class FirebaseAuthenticationPlugin: CAPPlugin {
         notifyListeners(phoneCodeSentEvent, data: result, retainUntilConsumed: true)
     }
 
+    @objc func deleteUser(_ call: CAPPluginCall) {
+        implementation?.deleteUser(call)
+    }
+    
     private func firebaseAuthenticationConfig() -> FirebaseAuthenticationConfig {
         var config = FirebaseAuthenticationConfig()
 

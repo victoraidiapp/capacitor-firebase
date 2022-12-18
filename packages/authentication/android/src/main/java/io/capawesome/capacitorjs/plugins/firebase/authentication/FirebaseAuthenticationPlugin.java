@@ -542,6 +542,14 @@ public class FirebaseAuthenticationPlugin extends Plugin {
     }
 
     @PluginMethod
+    public void deleteUser(PluginCall call) {
+        try {
+            implementation.deleteUser(call);
+        } catch (Exception ex) {
+            call.reject(ex.getLocalizedMessage());
+        }
+    }
+    @PluginMethod
     public void unlink(PluginCall call) {
         try {
             String providerId = call.getString("providerId");

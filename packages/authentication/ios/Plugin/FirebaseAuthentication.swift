@@ -398,6 +398,21 @@ public typealias AuthStateChangedObserver = () -> Void
         }
     }
 
+    @objc func deleteUser(_ call: CAPPluginCall) {
+
+            let user = Auth.auth().currentUser
+            user?.delete { error in
+                if let error = error {
+                    call.reject("Error deleting account.")
+                }else {
+                    call.resolve()
+                }
+            }
+          
+           
+
+    }
+    
     @objc func unlink(user: User, providerId: String, completion: @escaping (User?, Error?) -> Void) {
         user.unlink(fromProvider: providerId) { user, error in
             completion(user, error)

@@ -508,6 +508,11 @@ export class FirebaseAuthenticationWeb
     await auth.signOut();
   }
 
+  public async deleteUser(): Promise<void> {
+    const auth = getAuth();
+    await auth.deleteUser(auth.currentUser)
+  }
+
   public async unlink(options: UnlinkOptions): Promise<UnlinkResult> {
     const auth = getAuth();
     if (!auth.currentUser) {
